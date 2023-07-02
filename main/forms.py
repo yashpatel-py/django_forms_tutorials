@@ -23,21 +23,13 @@ class EmployeeForm(forms.Form):
         label="Employee Salary",
         initial=0,
     )
-    # FloatField
-    emp_score = forms.FloatField(
-        min_value=0.0,
-        max_value=10.0,
-        required=False,
-        widget=forms.NumberInput(attrs={
-            'class': 'form-control',
-        }),
-        label="Employee Salary",
-        initial=0.0,
-    )
-    # BooleanField
-    is_employed = forms.BooleanField(
-        widget=forms.CheckboxInput(attrs={
-            'class': 'form-check-input'
-        }),
-        label="Is Employed",
+    # DateField
+    employed_joining_date = forms.DateField(
+        widget=forms.DateInput(
+            attrs={
+                'class': 'form-control',
+                'type':"date"
+            }
+        ),
+        initial='2023-07-10'
     )
