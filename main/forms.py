@@ -2,6 +2,7 @@ from django import forms
 from .models import Employee
 
 class EmployeeForm(forms.Form):
+    # CharField
     emp_name = forms.CharField(
         max_length=50,
         label="Employee Name",
@@ -11,9 +12,10 @@ class EmployeeForm(forms.Form):
         }),
         initial="Name",
     )
+    # IntegerField
     emp_salary = forms.IntegerField(
-        min_value=0,
-        max_value=105,
+        # min_value=0,
+        # max_value=105,
         required=False,
         widget=forms.NumberInput(attrs={
             'class': 'form-control',
@@ -21,6 +23,7 @@ class EmployeeForm(forms.Form):
         label="Employee Salary",
         initial=0,
     )
+    # FloatField
     emp_score = forms.FloatField(
         min_value=0.0,
         max_value=10.0,
@@ -30,4 +33,11 @@ class EmployeeForm(forms.Form):
         }),
         label="Employee Salary",
         initial=0.0,
+    )
+    # BooleanField
+    is_employed = forms.BooleanField(
+        widget=forms.CheckboxInput(attrs={
+            'class': 'form-check-input'
+        }),
+        label="Is Employed",
     )

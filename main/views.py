@@ -15,8 +15,14 @@ def employee_data(request):
             name = form.cleaned_data['emp_name']
             salary = form.cleaned_data['emp_salary']
             score = form.cleaned_data['emp_score']
+            is_employed = form.cleaned_data['is_employed']
             
-            emp = Employee.objects.create(emp_name=name, emp_salary=salary, emp_score=score)
+            emp = Employee.objects.create(
+                emp_name=name, 
+                emp_salary=salary, 
+                emp_score=score,
+                is_employed=is_employed
+            )
             
             emp.save()
             return HttpResponse("The data is saved in database")
