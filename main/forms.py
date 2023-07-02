@@ -10,29 +10,24 @@ class EmployeeForm(forms.Form):
             'class': 'form-control'
         }),
         initial="Name",
-        help_text="Please enter your full name (First Name Last name)"
     )
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    emp_salary = forms.IntegerField()
+    emp_salary = forms.IntegerField(
+        min_value=0,
+        max_value=105,
+        required=False,
+        widget=forms.NumberInput(attrs={
+            'class': 'form-control',
+        }),
+        label="Employee Salary",
+        initial=0,
+    )
+    emp_score = forms.FloatField(
+        min_value=0.0,
+        max_value=10.0,
+        required=False,
+        widget=forms.NumberInput(attrs={
+            'class': 'form-control',
+        }),
+        label="Employee Salary",
+        initial=0.0,
+    )
