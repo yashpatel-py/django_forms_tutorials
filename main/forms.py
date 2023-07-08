@@ -14,6 +14,7 @@ class EmployeeForm(forms.Form):
         initial="Name",
     )
     
+    # EmailField
     emp_email = forms.EmailField(
         label = "Employee Email",
         widget = forms.EmailInput(attrs={
@@ -21,6 +22,13 @@ class EmployeeForm(forms.Form):
             'type': 'email',
             'placeholder': 'example@example.com'
         }),
+    )
+    
+    emp_files = forms.FileField(
+        label="Upload File",
+        widget=forms.ClearableFileInput(attrs={
+            'class': 'form-control'
+        })
     )
     
     # DateTimeField
