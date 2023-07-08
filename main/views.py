@@ -13,12 +13,11 @@ def employee_data(request):
         form = EmployeeForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['emp_name']
-            salary = form.cleaned_data['emp_salary']
+
             emp_joining_date = form.cleaned_data['employed_joining_date']
             
             emp = Employee.objects.create(
-                emp_name=name, 
-                emp_salary=salary, 
+                emp_name=name,
                 employed_joining_date = emp_joining_date
             )
             
