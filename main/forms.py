@@ -13,6 +13,16 @@ class EmployeeForm(forms.Form):
         }),
         initial="Name",
     )
+    
+    emp_email = forms.EmailField(
+        label = "Employee Email",
+        widget = forms.EmailInput(attrs={
+            'class': 'form-control',
+            'type': 'email',
+            'placeholder': 'example@example.com'
+        }),
+    )
+    
     # DateTimeField
     employed_joining_date = forms.DateTimeField(
         widget=forms.DateInput(
