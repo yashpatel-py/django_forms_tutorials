@@ -15,11 +15,13 @@ def employee_data(request):
             name = form.cleaned_data['emp_name']
             email = form.cleaned_data['emp_email']
             profile_photo = form.cleaned_data['emp_profile']
+            url_employee = form.cleaned_data['emp_url']
             
             emp = Employee.objects.create(
                 emp_name = name,
                 emp_email = email,
                 emp_profile = profile_photo,
+                emp_url = url_employee
             )
             
             emp.save()

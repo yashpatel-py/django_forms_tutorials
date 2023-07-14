@@ -31,3 +31,14 @@ class EmployeeForm(forms.Form):
             'class': 'form-control'
         })
     )
+    
+    # URLField
+    emp_url = forms.URLField(
+        label="Employee URL",
+        widget=forms.URLInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Add your link'
+            }
+        )
+    )
