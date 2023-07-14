@@ -24,20 +24,10 @@ class EmployeeForm(forms.Form):
         }),
     )
     
-    emp_files = forms.FileField(
-        label="Upload File",
+    #ImageField
+    emp_profile = forms.ImageField(
+        label="Employee Profile Photo",
         widget=forms.ClearableFileInput(attrs={
             'class': 'form-control'
         })
-    )
-    
-    # DateTimeField
-    employed_joining_date = forms.DateTimeField(
-        widget=forms.DateInput(
-            attrs={
-                'class': 'form-control',
-                'type': 'datetime-local'
-            }
-        ),
-        initial='2023-07-10'
     )

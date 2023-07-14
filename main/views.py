@@ -14,14 +14,12 @@ def employee_data(request):
         if form.is_valid():
             name = form.cleaned_data['emp_name']
             email = form.cleaned_data['emp_email']
-            employee_file = form.cleaned_data['emp_files']
-            emp_joining_date = form.cleaned_data['employed_joining_date']
+            profile_photo = form.cleaned_data['emp_profile']
             
             emp = Employee.objects.create(
                 emp_name = name,
                 emp_email = email,
-                emp_files = employee_file,
-                employed_joining_date = emp_joining_date
+                emp_profile = profile_photo,
             )
             
             emp.save()
