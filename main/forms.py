@@ -2,6 +2,12 @@ from django import forms
 from .models import Employee
 
 class EmployeeForm(forms.Form):
+    gender_choices = [
+        ("Male", "Male"),
+        ("Female", "Female"),
+        ("Other", "Other")
+    ]
+    
     # CharField
     emp_name = forms.CharField(
         max_length=50,
@@ -24,21 +30,10 @@ class EmployeeForm(forms.Form):
         }),
     )
     
-    #ImageField
-    emp_profile = forms.ImageField(
-        label="Employee Profile Photo",
-        widget=forms.ClearableFileInput(attrs={
+    # ChoiceField
+    emp_gender = forms.ChoiceField(
+        choices=gender_choices,
+        widget=forms.Select(attrs={
             'class': 'form-control'
         })
-    )
-    
-    # URLField
-    emp_url = forms.URLField(
-        label="Employee URL",
-        widget=forms.URLInput(
-            attrs={
-                'class': 'form-control',
-                'placeholder': 'Add your link'
-            }
-        )
     )
