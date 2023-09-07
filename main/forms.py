@@ -1,7 +1,7 @@
 from django import forms
-from .models import Employee
+from .models import Employee, Position
 
-class EmployeeForm(forms.Form):
+class EmployeeForm(forms.ModelForm):
     gender_choices = [
         ("Male", "Male"),
         ("Female", "Female"),
@@ -37,3 +37,21 @@ class EmployeeForm(forms.Form):
             'class': 'form-control'
         })
     )
+    
+    # ManyToManyField
+    emp_position = forms.ModelMultipleChoiceField(
+        label = 'Employee Position',
+        queryset = Position.objects.all(),
+        widget = forms.CheckboxSelectMultiple(attrs={
+            'class': 'form-check-input'
+        })
+    )
+    
+    class Meta:
+        model = Employee
+        fields = [
+            'emp_name',
+            'emp_email',
+            'emp_gender',
+            'emp_position'
+        ]
