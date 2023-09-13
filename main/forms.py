@@ -13,7 +13,7 @@ class EmployeeForm(forms.ModelForm):
         max_length=50,
         label="Employee Name",
         required=True,
-        widget=forms.TextInput(attrs={
+        widget=forms.PasswordInput(attrs={
             'class': 'form-control',
             
         }),
