@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import EmployeeForm
 from .models import Employee
@@ -8,21 +8,19 @@ from .models import Employee
 def home(request):
     return render(request, "main/home.html")
 
-def employee_data(request):
+def employee_data(request):    
+    # def create_employee(request):
     if request.method == 'POST':
-        form = EmployeeForm(request.POST, request.FILES)
+        # If the request method is POST, it means the form is submitted
+        form = EmployeeForm(request.POST)
+
         if form.is_valid():
-            name = form.cleaned_data['emp_name']
-            email = form.cleaned_data['emp_email']
-            gender = form.cleaned_data['emp_gender']
-            
-            emp = Employee.objects.create(
-                emp_name = name,
-                emp_email = email,
-                emp_gender = gender
-            )
-            
-            emp.save()
+            # If the form is valid, save the data to the database
+            form.save()
+            # Redirect to a success page or another view
             return HttpResponse("The data is saved in database")
-    form = EmployeeForm()
+    else:
+        # If the request method is GET, it means the user is accessing the form
+        form = EmployeeForm()
+
     return render(request, 'main/employee.html', {'form': form})

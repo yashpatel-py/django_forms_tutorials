@@ -1,13 +1,13 @@
 from django.db import models
 
 # Create your models here.
-class Employee(models.Model):
-    gender_choices = [
-        ("Male", "Male"),
-        ("Female", "Female"),
-        ("Other", "Other")
-    ]
+class position(models.Model):
+    position_name = models.CharField(max_length=200, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    edited_at = models.DateTimeField(auto_now=True)
     
+    def __str__(self):
+        return self.position_name
+
+class Employee(models.Model):
     emp_name = models.CharField(max_length=50, null=False, blank=False)
-    emp_email = models.EmailField(null=True, blank=True)
-    emp_gender = models.CharField(choices=gender_choices, null=True, blank=True, max_length=50)
