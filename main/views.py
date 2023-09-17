@@ -15,12 +15,17 @@ def employee_data(request):
         form = EmployeeForm(request.POST)
 
         if form.is_valid():
-            # If the form is valid, save the data to the database
-            form.save()
-            # Redirect to a success page or another view
+            name = form.cleaned_data['emp_name']
+            email = form.cleaned_data['emp_email']
+            gender = form.cleaned_data['emp_gender']
+            
+            emp = Employee.objects.create(
+                emp_name = name,
+                emp_email = email,
+                emp_gender = gender
+            )
+            
+            emp.save()
             return HttpResponse("The data is saved in database")
-    else:
-        # If the request method is GET, it means the user is accessing the form
-        form = EmployeeForm()
-
+    form = EmployeeForm()
     return render(request, 'main/employee.html', {'form': form})
