@@ -15,17 +15,8 @@ def employee_data(request):
         form = EmployeeForm(request.POST)
 
         if form.is_valid():
-            name = form.cleaned_data['emp_name']
-            email = form.cleaned_data['emp_email']
-            gender = form.cleaned_data['emp_gender']
-            
-            emp = Employee.objects.create(
-                emp_name = name,
-                emp_email = email,
-                emp_gender = gender
-            )
-            
-            emp.save()
+            form.save()
             return HttpResponse("The data is saved in database")
-    form = EmployeeForm()
+    else:
+        form = EmployeeForm()
     return render(request, 'main/employee.html', {'form': form})
